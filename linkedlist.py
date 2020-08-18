@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-
 # based on implementation at https://realpython.com/linked-lists-python/
 
 class Node:
