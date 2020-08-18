@@ -35,3 +35,50 @@ class LinkedList:
         while node is not None:
             yield node
             node = node.next
+
+    def add_front(self, value):
+        node = Node(value)
+        node.next = self.head
+        self.head = node
+
+    def add_back(self, value):
+        new_node = Node(value)
+        if self.head == None:
+            self.head = node
+        else:
+            for node in self:
+                pass
+            node.next = new_node
+
+    def add_after(self, target_val, val_to_add):
+        if self.head == None:
+            raise Exception("List is empty")
+
+        new_node = Node(val_to_add)
+
+        for node in self:
+            if node.value == target_val:
+                new_node.next = node.next
+                node.next = new_node
+                return
+            
+        raise Exception("Node with value '%s' not found" % target_val)
+
+    def add_before(self, target_val, val_to_add):
+        if self.head == None:
+            raise Exception("List is empty")
+
+        new_node = Node(val_to_add)
+
+        if self.head.value == target_val:
+            return self.add_front(new_node)
+
+        prev_node = self.head
+        for node in self:
+            if node.value == target_val:
+                prev_node.next = new_node
+                new_node.next = node
+                return
+            prev_node = node
+            
+        raise Exception("Node with value '%s' not found" % target_val)
