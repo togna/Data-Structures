@@ -52,6 +52,95 @@ class TestLinkedList(unittest.TestCase):
             result += str(ele.value)
         self.assertEqual(result, "unodos")
 
+    # add_front tests
+    def test_add_front_empty_list(self):
+        test_list = LinkedList()
+        test_list.add_front(1)
+        self.assertEqual(test_list.head.value, 1)
+
+    def test_add_front_one_ele_list(self):
+        test_list = LinkedList()
+        test_list.add_front("one")
+        test_list.add_front("two")
+        self.assertEqual(test_list.head.value, "two")
+
+    def test_add_front_two_ele_list(self):
+        test_list = LinkedList()
+        test_list.add_front("uno")
+        test_list.add_front("dos")
+        test_list.add_front("tres")
+        self.assertEqual(test_list.head.value, "tres")
+
+    # add_back tests
+    def test_add_back_empty_list(self):
+        test_list = LinkedList()
+        test_list.add_back(1)
+        self.assertEqual(test_list.head.value, 1)
+
+    def test_add_back_one_ele_list(self):
+        test_list = LinkedList()
+        test_list.add_back("one")
+        test_list.add_back(2)
+        self.assertEqual(test_list.head.next.value, 2)
+
+    def test_add_back_two_ele_list(self):
+        test_list = LinkedList()
+        test_list.add_back("one")
+        test_list.add_back(2)
+        test_list.add_back("tres")
+        self.assertEqual(test_list.head.next.next.value, "tres")
+
+    # add after tests
+    def test_add_after_empty_list(self):
+        test_list = LinkedList()
+        with self.assertRaises(Exception):
+            test_list.add_after(1, 2)
+
+    def test_add_after_one_ele(self):
+        test_list = LinkedList([1])
+        test_list.add_after(1, 2)
+        self.assertEqual(test_list.head.next.value, 2)
+
+    def test_add_after_first_ele(self):
+        test_list = LinkedList([1, 2])
+        test_list.add_after(1, 3)
+        self.assertEqual(test_list.head.next.value, 3)
+
+    def test_add_after_last_ele(self):
+        test_list = LinkedList([1, 2])
+        test_list.add_after(2, 3)
+        self.assertEqual(test_list.head.next.next.value, 3)
+
+    def test_add_after_missing_ele(self):
+        test_list = LinkedList([1, 2, 3])
+        with self.assertRaises(Exception):
+            test_list.add_after(4, 5)
+
+    # add before tests
+    def test_add_before_empty_list(self):
+        test_list = LinkedList()
+        with self.assertRaises(Exception):
+            test_list.add_before(1, 2)
+
+    def test_add_before_one_ele(self):
+        test_list = LinkedList([1])
+        test_list.add_before(1, 2)
+        self.assertEqual(test_list.head.value, 2)
+
+    def test_add_before_mid_list(self):
+        test_list = LinkedList([1, 2])
+        test_list.add_before(2, 3)
+        self.assertEqual(test_list.head.next.value, 3)
+
+    def test_add_before_last_ele(self):
+        test_list = LinkedList([1, 2, 3])
+        test_list.add_before(3, 4)
+        self.assertEqual(test_list.head.next.next.value, 4)
+
+    def test_add_before_missing_ele(self):
+        test_list = LinkedList([1, 2, 3])
+        with self.assertRaises(Exception):
+            test_list.add_before(4, 5)
 
 if __name__ == "__main__":
     unittest.main()
