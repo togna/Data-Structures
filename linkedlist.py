@@ -44,7 +44,7 @@ class LinkedList:
     def add_back(self, value):
         new_node = Node(value)
         if self.head == None:
-            self.head = node
+            self.head = new_node
         else:
             for node in self:
                 pass
@@ -71,7 +71,9 @@ class LinkedList:
         new_node = Node(val_to_add)
 
         if self.head.value == target_val:
-            return self.add_front(new_node)
+            new_node.next = self.head
+            self.head = new_node
+            return
 
         prev_node = self.head
         for node in self:
