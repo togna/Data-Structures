@@ -90,7 +90,7 @@ class TestLinkedList(unittest.TestCase):
         test_list.add_back("tres")
         self.assertEqual(test_list.head.next.next.value, "tres")
 
-    # add after tests
+    # add_after tests
     def test_add_after_empty_list(self):
         test_list = LinkedList()
         with self.assertRaises(Exception):
@@ -116,7 +116,7 @@ class TestLinkedList(unittest.TestCase):
         with self.assertRaises(Exception):
             test_list.add_after(4, 5)
 
-    # add before tests
+    # add_before tests
     def test_add_before_empty_list(self):
         test_list = LinkedList()
         with self.assertRaises(Exception):
@@ -141,6 +141,32 @@ class TestLinkedList(unittest.TestCase):
         test_list = LinkedList([1, 2, 3])
         with self.assertRaises(Exception):
             test_list.add_before(4, 5)
+
+    # remove_node tests
+    def test_rm_node_empty_list(self):
+        test_list = LinkedList()
+        with self.assertRaises(Exception):
+            test_list.remove_node(1)
+
+    def test_rm_non_existant_node(self):
+        test_list = LinkedList([1, 2, 3])
+        with self.assertRaises(Exception):
+            test_list.remove_node(4)
+
+    def test_rm_node_one_ele(self):
+        test_list = LinkedList(["one"])
+        test_list.remove_node("one")
+        self.assertEqual(test_list.head, None)
+
+    def test_rm_middle_node(self):
+        test_list = LinkedList(["uno", "dos", "tres"])
+        test_list.remove_node("dos")
+        self.assertEqual(test_list.head.next.value, "tres")
+
+    def test_rm_last_node(self):
+        test_list = LinkedList(["one", "two", "three"])
+        test_list.remove_node("three")
+        self.assertEqual(test_list.head.next.next, None)
 
 if __name__ == "__main__":
     unittest.main()

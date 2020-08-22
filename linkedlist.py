@@ -93,7 +93,8 @@ class LinkedList:
                 self.head = self.head.next
                 return
             
-            prior_node = self.head, node = self.head.next
+            prior_node = self.head
+            node = self.head.next
 
             while node != None:
                 if node.value == target_val:
