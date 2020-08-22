@@ -84,3 +84,22 @@ class LinkedList:
             prev_node = node
             
         raise Exception("Node with value '%s' not found" % target_val)
+
+    def remove_node(self, target_val):
+            if self.head == None:
+                raise Exception("List is empty")
+
+            if self.head.value == target_val:
+                self.head = self.head.next
+                return
+            
+            prior_node = self.head, node = self.head.next
+
+            while node != None:
+                if node.value == target_val:
+                    prior_node.next = node.next
+                    return
+                prior_node = node
+                node = node.next
+
+            raise Exception("Node with value '%s' not found" % target_val)
