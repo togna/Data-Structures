@@ -52,6 +52,15 @@ class TestLinkedList(unittest.TestCase):
             result += str(ele.value)
         self.assertEqual(result, "unodos")
 
+    # is_empty tests
+    def test_isempty_empty_list(self):
+        test_list = LinkedList()
+        self.assertEqual(test_list.is_empty(), True)
+
+    def test_isempty_non_empty_list(self):
+        test_list = LinkedList([1])
+        self.assertEqual(test_list.is_empty(), False)
+
     # add_front tests
     def test_add_front_empty_list(self):
         test_list = LinkedList()
@@ -190,6 +199,42 @@ class TestLinkedList(unittest.TestCase):
     def test_getitem_last(self):
         test_list = LinkedList([1, 2, 3])
         self.assertEqual(test_list[2], 3)
+
+    # reverse tests
+    def test_reverse_empty_list(self):
+        test_list = LinkedList()
+        test_list.reverse()
+        self.assertTrue(test_list.is_empty())
+
+    def test_reverse_single_item(self):
+        test_list = LinkedList(["uno"])
+        test_list.reverse()
+        self.assertEqual(test_list.head.value, "uno")
+
+    def test_reverse_two_items(self):
+        test_list = LinkedList([1, 2])
+        test_list.reverse()
+        flag = True
+        value = 2
+        for node in test_list:
+            if node.value != value:
+                flag = False
+                break
+            value -= 1
+        self.assertTrue(flag)
+
+    def test_reverse_three_items(self):
+        test_list = LinkedList([1, 2, 3])
+        test_list.reverse()
+        flag = True
+        value = 3
+        for node in test_list:
+            if node.value != value:
+                flag = False
+                break
+            value -= 1
+        self.assertTrue(flag)
+
 
 if __name__ == "__main__":
     unittest.main()
