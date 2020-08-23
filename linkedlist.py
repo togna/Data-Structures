@@ -36,6 +36,9 @@ class LinkedList:
             yield node
             node = node.next
 
+    def is_empty(self):
+        return self.head == None
+
     def add_front(self, value):
         node = Node(value)
         node.next = self.head
