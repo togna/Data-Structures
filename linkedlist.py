@@ -104,3 +104,14 @@ class LinkedList:
                 node = node.next
 
             raise Exception("Node with value '%s' not found" % target_val)
+
+    def __getitem__(self, target_index):
+        if self.head == None:
+            raise Exception("List is empty")
+        
+        for index, node in enumerate(self):
+            if index == target_index:
+                return node.value
+
+        raise Exception("Node at index '%s' not found" % target_index)
+
