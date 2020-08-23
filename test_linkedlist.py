@@ -168,5 +168,28 @@ class TestLinkedList(unittest.TestCase):
         test_list.remove_node("three")
         self.assertEqual(test_list.head.next.next, None)
 
+    # __getitem__ tests
+    def test_getitem_empty_list(self):
+        test_list = LinkedList()
+        with self.assertRaises(Exception):
+            test_list[0]
+    
+    def test_getitem_out_of_bounds(self):
+        test_list = LinkedList([1, 2, 3])
+        with self.assertRaises(Exception):
+            test_list[3]
+
+    def test_getitem_first(self):
+        test_list = LinkedList(["one"])
+        self.assertEqual(test_list[0], "one")
+
+    def test_getitem_middle(self):
+        test_list = LinkedList(["uno", "dos", "tres"])
+        self.assertEqual(test_list[1], "dos")
+
+    def test_getitem_last(self):
+        test_list = LinkedList([1, 2, 3])
+        self.assertEqual(test_list[2], 3)
+
 if __name__ == "__main__":
     unittest.main()
