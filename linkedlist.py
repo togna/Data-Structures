@@ -118,3 +118,13 @@ class LinkedList:
 
         raise Exception("Node at index '%s' not found" % target_index)
 
+    def reverse(self):
+        if self.head == None or self.head.next == None:
+            return
+        
+        reversed_list = LinkedList()
+
+        for node in self:
+            reversed_list.add_front(node.value)
+
+        self.head = reversed_list.head
