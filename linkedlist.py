@@ -20,6 +20,14 @@ class LinkedList:
                 node = node.next
             node.next = None
 
+    def __len__(self):
+        node = self.head
+        counter = 0
+        while node != None:
+            counter += 1
+            node = node.next
+        return counter
+
     def __str__(self):
         '''prints in format head -> ... -> tail -> None'''
         node = self.head

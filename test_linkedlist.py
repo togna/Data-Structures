@@ -17,6 +17,23 @@ class TestLinkedList(unittest.TestCase):
         test_list = LinkedList([1, 2])
         self.assertEqual(test_list.head.next.value, 2)
 
+    # __len__ tests
+    def test_len_empty_list(self):
+        test_list = LinkedList()
+        self.assertEqual(len(test_list), 0)
+
+    def test_len_single_string(self):
+        test_list = LinkedList(["item"])
+        self.assertEqual(len(test_list), 1)
+
+    def test_len_two_dicts(self):
+        test_list = LinkedList([{'key1': 'val1', 'key2': 'val2'}, {'key': 'val'}])
+        self.assertEqual(len(test_list), 2)
+
+    def test_len_three_tuples(self):
+        test_list = LinkedList([(1, 2), (3, 4), (5, 6)])
+        self.assertEqual(len(test_list), 3)
+
     # __str__ tests
     def test_str_empty_list(self):
         test_list = LinkedList()
