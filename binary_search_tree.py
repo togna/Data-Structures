@@ -30,4 +30,16 @@ class BinarySearchTree:
                 else:
                     compared_node = compared_node.left
 
+    def search(self, value):
+        compared_node = self.root
+        while compared_node != None:
+            if value == compared_node.value:
+                return True
+            if value > compared_node.value:
+                compared_node = compared_node.right
+            else:
+                compared_node = compared_node.left
+        return False
+
+
     
