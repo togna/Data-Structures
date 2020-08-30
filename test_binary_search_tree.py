@@ -96,6 +96,50 @@ class TestBST(unittest.TestCase):
         self.test_tree.insert(0)
         self.assertTrue(self.test_tree.search(0))
 
+    def test_delete_empty_tree(self):
+        with self.assertRaises(Exception):
+            self.test_tree.delete(1)
+
+    def test_delete_missing_value(self):
+        self.test_tree.insert(1)
+        self.test_tree.insert(2)
+        self.test_tree.insert(3)
+        with self.assertRaises(Exception):
+            self.test_tree.delete(4)
+
+    def test_delete_only_value(self):
+        self.test_tree.insert(1)
+        self.test_tree.delete(1)
+        self.assertEqual(self.test_tree.root, None)
+
+    def test_delete_leaf_node(self):
+        self.test_tree.insert(1)
+        self.test_tree.insert(2)
+        self.test_tree.delete(2)
+        self.assertEqual(self.test_tree.root.right, None)
+
+    def test_delete_root_right_child(self):
+        self.test_tree.insert(1)
+        self.test_tree.insert(2)
+        self.test_tree.delete(1)
+        self.assertEqual(self.test_tree.root.value, 2)
+
+    def test_delete_root_left_child(self):
+        self.test_tree.insert(1)
+        self.test_tree.insert(0)
+        self.test_tree.delete(1)
+        self.assertEqual(self.test_tree.root.value, 0)
+
+    def test_delete_root_two_children(self):
+        self.test_tree.insert(1)
+        self.test_tree.insert(0)
+        self.test_tree.insert(3)
+        self.test_tree.insert(2)
+        self.test_tree.delete(1)
+        self.assertEqual(self.test_tree.root.value, 2)
+
+    
+
 
 if __name__ == "__main__":
     unittest.main()
